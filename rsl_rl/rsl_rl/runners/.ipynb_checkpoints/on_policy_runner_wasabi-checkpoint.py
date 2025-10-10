@@ -19,8 +19,8 @@ from torch.utils.tensorboard import SummaryWriter
 import rsl_rl
 from rsl_rl.algorithms import WASABI
 from rsl_rl.modules import ActorCritic, ActorCriticRecurrent
-from rsl_rl.modules.discriminator import Discriminator
-from rsl_rl.modules.normalizer import Normalizer
+from rsl_rl.modules.discriminator_wasabi import Discriminator
+from rsl_rl.modules.normalizer_wasabi import Normalizer
 from rsl_rl.env import VecEnv
 
 

@@ -35,7 +35,7 @@ import torch
 import numpy as np
 
 from rsl_rl.env import VecEnv
-from rsl_rl.runners import OnPolicyRunner, WASABIOnPolicyRunner
+from rsl_rl.runners import OnPolicyRunner, WASABIOnPolicyRunner, AMPOnPolicyRunner
 
 from legged_gym import LEGGED_GYM_ROOT_DIR, LEGGED_GYM_ENVS_DIR
 from .helpers import get_args, update_cfg_from_args, class_to_dict, get_load_path, set_seed, parse_sim_params
@@ -145,11 +145,8 @@ class TaskRegistry():
         
         train_cfg_dict = class_to_dict(train_cfg)
         
-        # 根据设置中algorithm_class_name选择对应的runner
-        if train_cfg_dict["runner"]["algorithm_class_name"] == "PPO":
-            runner = OnPolicyRunner(env, train_cfg_dict, log_dir, device=args.rl_device)
-        elif train_cfg_dict["runner"]["algorithm_class_name"] == "WASABI":
-            runner = WASABIOnPolicyRunner(env, train_cfg_dict, log_dir, device=args.rl_device)
+        runner_class = eval(train_cfg.runner_class_name)
+        runner = runner_class(env, train_cfg_dict, log_dir, device=args.rl_device)
         
         #save resume path before creating a new log_dir
         resume = train_cfg.runner.resume

@@ -123,7 +123,7 @@ class Solo8FlatCfgPPO(LeggedRobotCfgPPO):
         algorithm_class_name = "WASABI"
         policy_class_name = "ActorCritic"
         load_run = -1
-        max_iterations = 1000
+        max_iterations = 2000
         normalize_style_reward = True
         compute_dynamic_time_warping = False
         num_dynamic_time_warping_samples = 50

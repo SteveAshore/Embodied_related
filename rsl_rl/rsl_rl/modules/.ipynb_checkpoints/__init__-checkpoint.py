@@ -28,5 +28,5 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from .utils import split_and_pad_trajectories, unpad_trajectories
-from .transforms_utils import quaternion_slerp, quaternion_inverse, quaternion_multiply, quaternion_about_axis
+from .actor_critic import ActorCritic
+from .actor_critic_recurrent import ActorCriticRecurrent
