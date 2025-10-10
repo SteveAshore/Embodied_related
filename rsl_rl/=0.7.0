@@ -1,0 +1,5 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting tensordict
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/ed/15/99835a6103b24a6c625c9f7917e930dfb215a6b345e83a39a716c0a6a8cc/tensordict-0.5.0-cp38-cp38-manylinux1_x86_64.whl (1.7 MB)
+Collecting torch>=2.4.0
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/a9/71/45aac46b75742e08d2d6f9fc2b612223b5e36115b8b2ed673b23c21b5387/torch-2.4.1-cp38-cp38-manylinux1_x86_64.whl (797.1 MB)

@@ -1,0 +1,10 @@
+# ------------------------
+# ignore IsaacGym package
+# ------------------------
+IsaacGym_Preview_4_Package.tar.gz
+
+# ------------------------
+# ignore sub repo
+# ------------------------
+/isaacgym/
+/unitree_rl_gym/
