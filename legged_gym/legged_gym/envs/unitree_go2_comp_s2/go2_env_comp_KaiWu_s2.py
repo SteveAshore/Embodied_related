@@ -10,10 +10,10 @@ from isaacgym.terrain_utils import (
     stepping_stones_terrain,
     wave_terrain,
 )
-from legged_gym import LEGGED_GYM_ROOT_DIR, envs
+from legged_gym import LEGGED_GYM_ROOT_DIR
 import time
 from warnings import WarningMessage
-from legged_gym.utils.terrain_comp_s2 import Terrain
+from .terrain_comp_KaiWu_s2 import Terrain
 import numpy as np
 import os
 import random
@@ -23,10 +23,8 @@ from isaacgym import gymtorch, gymapi, gymutil
 
 
 import torch
-from torch import Tensor
 from typing import Tuple, Dict
 
-from legged_gym import LEGGED_GYM_ROOT_DIR
 from legged_gym.envs.base.base_task import BaseTask
 from legged_gym.utils.math import wrap_to_pi, quat_apply_yaw, get_euler_xyz
 from legged_gym.utils.helpers import class_to_dict
@@ -34,7 +32,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg
 import itertools
 
 
-class LeggedRobotS2(BaseTask):
+class Go2KaiWuS2(BaseTask):
     def __init__(self, cfg: LeggedRobotCfg, sim_params, physics_engine, sim_device, headless):
         """Parses the provided config file,
             calls create_sim() (which creates, simulation and environments),

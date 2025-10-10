@@ -18,7 +18,7 @@ from isaacgym.torch_utils import (
     quat_rotate,
     quat_rotate_inverse,
 )
-from resources.datasets.wasabi.motion_loader import MotionLoader
+from resources.dataset_loader.wasabi.motion_loader import MotionLoader
 from typing import Dict
 from legged_gym.utils.keyboard_controller import KeyboardAction, Delta
 

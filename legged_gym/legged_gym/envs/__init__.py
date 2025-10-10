@@ -38,12 +38,14 @@ from .cassie.cassie import Cassie
 from .cassie.cassie_config import CassieRoughCfg, CassieRoughCfgPPO
 from .solo8.solo8 import Solo8
 from .solo8.solo8_config import Solo8FlatCfg, Solo8FlatCfgPPO
+from .unitree_a1_amp.legged_robot_amp import A1AMPRobot
+from .unitree_a1_amp.a1_config_amp import A1AMPCfg, A1AMPCfgPPO
 from .unitree_a1.a1_config import A1RoughCfg, A1RoughCfgPPO
 from .unitree_g1.g1_env import G1Robot
 from .unitree_g1.g1_config import G1RoughCfg, G1RoughCfgPPO
 from .unitree_go2.go2_config import GO2RoughCfg, GO2RoughCfgPPO
-from .unitree_go2_comp_s2.go2_config_comp_s2 import GO2S2RoughCfg, GO2S2RoughCfgPPO
-from .base.legged_robot_comp_s2 import LeggedRobotS2
+from .unitree_go2_comp_s2.go2_config_comp_KaiWu_s2 import GO2KaiWuS2RoughCfg, GO2KaiWuS2RoughCfgPPO
+from .unitree_go2_comp_s2.go2_env_comp_KaiWu_s2 import Go2KaiWuS2
 from .unitree_h1.h1_env import H1Robot
 from .unitree_h1.h1_config import H1RoughCfg, H1RoughCfgPPO
 from .unitree_h1_2.h1_2_env import H1_2Robot
@@ -60,8 +62,9 @@ task_registry.register( "anymal_b", Anymal, AnymalBRoughCfg(), AnymalBRoughCfgPP
 task_registry.register( "cassie", Cassie, CassieRoughCfg(), CassieRoughCfgPPO() )
 task_registry.register( "solo8", Solo8, Solo8FlatCfg(), Solo8FlatCfgPPO() )
 task_registry.register( "unitree_a1", LeggedRobot, A1RoughCfg(), A1RoughCfgPPO() )
+task_registry.register( "unitree_a1_amp", A1AMPRobot, A1AMPCfg(), A1AMPCfgPPO() )
 task_registry.register( "unitree_g1", G1Robot, G1RoughCfg(), G1RoughCfgPPO() )
 task_registry.register( "unitree_go2", LeggedRobot, GO2RoughCfg(), GO2RoughCfgPPO() )
-task_registry.register( "unitree_go2_comp_s2", LeggedRobotS2, GO2S2RoughCfg(), GO2S2RoughCfgPPO() )
+task_registry.register( "unitree_go2_comp_s2", Go2KaiWuS2, GO2KaiWuS2RoughCfg(), GO2KaiWuS2RoughCfgPPO() )
 task_registry.register( "unitree_h1", H1Robot, H1RoughCfg(), H1RoughCfgPPO() )
 task_registry.register( "unitree_h1_2", H1_2Robot, H1_2RoughCfg(), H1_2RoughCfgPPO() )

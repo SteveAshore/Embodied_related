@@ -30,3 +30,4 @@
 
 from .ppo import PPO
 from .wasabi import WASABI
+from .amp import AMPPPO

@@ -30,3 +30,5 @@
 
 from .on_policy_runner import OnPolicyRunner
 from .on_policy_runner_wasabi import WASABIOnPolicyRunner
+from .on_policy_runner_amp import AMPOnPolicyRunner
+from .on_policy_runner_KW_s2 import OnPolicyRunnerKWs2

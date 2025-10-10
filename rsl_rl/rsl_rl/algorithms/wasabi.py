@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.optim as optim
 
 from rsl_rl.modules import ActorCritic
-from rsl_rl.modules.discriminator import Discriminator
+from rsl_rl.rsl_rl.modules.discriminator_wasabi import Discriminator
 from rsl_rl.storage import RolloutStorage
 from rsl_rl.storage.replay_buffer import ReplayBuffer
 

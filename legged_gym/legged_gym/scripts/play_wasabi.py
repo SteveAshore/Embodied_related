@@ -10,8 +10,6 @@
 Plays a trained policy and logs statistics.
 """
 
-# 20250925 zqy: modified from wasabi/scripts/play.py
-# solo-gym -> isaac-gym
 from legged_gym import LEGGED_GYM_ROOT_DIR
 from legged_gym.envs import task_registry
 from legged_gym.utils import get_args, export_policy_as_jit, export_policy_as_onnx, Logger

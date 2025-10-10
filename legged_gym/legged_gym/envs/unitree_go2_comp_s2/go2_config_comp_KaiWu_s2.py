@@ -1,6 +1,6 @@
 from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
 
-class GO2S2RoughCfg( LeggedRobotCfg ):
+class GO2KaiWuS2RoughCfg( LeggedRobotCfg ):
     class env( LeggedRobotCfg.env ):
         num_envs = 4096
         num_observations = 48  # robot state (48)
@@ -152,7 +152,7 @@ class GO2S2RoughCfg( LeggedRobotCfg ):
             gravity = 0.05
             height_measurements = 0
 
-class GO2S2RoughCfgPPO( LeggedRobotCfgPPO ):
+class GO2KaiWuS2RoughCfgPPO( LeggedRobotCfgPPO ):
     class algorithm( LeggedRobotCfgPPO.algorithm ):
         value_loss_coef = 1.0
         use_clipped_value_loss = True
