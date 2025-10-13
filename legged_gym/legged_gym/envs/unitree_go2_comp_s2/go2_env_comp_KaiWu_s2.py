@@ -213,6 +213,10 @@ class Go2KaiWuS2(BaseTask):
         
         # 如果没有步数大于0的环境，则直接返回
         if non_zero_len_ids.sum() == 0:
+            self.episode_success_duration[env_ids] = 0.0
+            self.episode_success[env_ids] = 0.0
+            self.episode_velocity[env_ids] = 0.0
+            self.episode_stability[env_ids] = 0.0
             return
             
         # 过滤出步数大于0的环境ID
@@ -232,6 +236,12 @@ class Go2KaiWuS2(BaseTask):
         valid_torques_sum = self.episode_sums["torques"][valid_env_ids]
         self.episode_stability[valid_env_ids] = valid_torques_sum / valid_lengths
 
+        # 4. 对于步数为0的环境，确保它们的指标为0
+        zero_len_ids = env_ids[~non_zero_len_ids]
+        if len(zero_len_ids) > 0:
+            self.episode_velocity[zero_len_ids] = 0.0
+            self.episode_stability[zero_len_ids] = 0.0
+
         if not self.cfg.terrain.is_eval:
             self.last_terrain_levels[env_ids] = self.terrain_levels[env_ids].clone()
 
@@ -248,6 +258,17 @@ class Go2KaiWuS2(BaseTask):
 
         # 为了计算单个地形的耗时, 故这里需要放在前面, 因为现在是不同的地形各自的分数需要返回
         self.extras["episode"] = {}
+
+        self.extras["episode"].update({
+            "episode_reward": torch.tensor(0.0, device=self.device),
+            "max_distance": torch.tensor(0.0, device=self.device),
+            "env_length": torch.tensor(self.terrain.env_length / 2, device=self.device),
+            "max_command_x": torch.tensor(self.command_ranges["lin_vel_x"][1], device=self.device),
+            "max_command_yaw": torch.tensor(self.command_ranges["ang_vel_yaw"][1], device=self.device),
+            "max_command_flat_x": torch.tensor(self.command_ranges["flat_lin_vel_x"][1], device=self.device),
+            "max_command_flat_yaw": torch.tensor(self.command_ranges["flat_ang_vel_yaw"][1], device=self.device),
+        })
+
         distance = torch.norm(self.root_states[env_ids, :2] - self.env_origins[env_ids, :2], dim=1)
         mask = torch.isclose(self.episode_success_duration, torch.tensor(0.0, device=self.device))
         self.episode_success_duration[env_ids] = (
@@ -261,29 +282,26 @@ class Go2KaiWuS2(BaseTask):
         self.extras["episode"]["episode_velocity"] = self.episode_velocity
         self.extras["episode"]["episode_stability"] = self.episode_stability
 
-        if len(env_ids) == 0:
-            return
-
         # fill extras
-        self.extras["episode"]["episode_reward"] = 0.0
         self.extras["episode"]["max_distance"] = torch.max(
             torch.norm(self.root_states[:, :2] - self.env_origins[:, :2], dim=1)
         )
-        self.extras["episode"]["env_length"] = self.terrain.env_length / 2
 
         # 由于要根据地形类型和难度, 这里返回下
         if not self.cfg.terrain.is_eval:
             self.extras["episode"]["terrain_level"] = self.last_terrain_levels
             self.extras["episode"]["terrain_types"] = self.terrain_types
 
-        self.extras["episode"]["max_command_x"] = self.command_ranges["lin_vel_x"][1]
-        self.extras["episode"]["max_command_yaw"] = self.command_ranges["ang_vel_yaw"][1]
-        self.extras["episode"]["max_command_flat_x"] = self.command_ranges["flat_lin_vel_x"][1]
-        self.extras["episode"]["max_command_flat_yaw"] = self.command_ranges["flat_ang_vel_yaw"][1]
-
         # send timeout info to the algorithm
         if self.cfg.env.send_timeouts:
             self.extras["time_outs"] = self.time_out_buf
+        
+        # if len(env_ids) == 0:
+        #     for key in self.episode_sums.keys():
+        #         self.extras["episode"]["rew_" + key] = torch.tensor(0.0, device=self.device)
+        #     if self.cfg.terrain.curriculum:
+        #         self.extras["episode"]["update_terrain"] = 1
+        #     return
 
         # update curriculum
         if self.cfg.terrain.curriculum:
@@ -303,7 +321,9 @@ class Go2KaiWuS2(BaseTask):
             self.extras["episode"]["rew_" + key] = (
                 torch.mean(self.episode_sums[key][env_ids]) / self.max_episode_length_s
             )
-            self.extras["episode"]["episode_reward"] += self.episode_sums[key] / self.max_episode_length_s
+            self.extras["episode"]["episode_reward"] += (
+                torch.mean(self.episode_sums[key][env_ids]) / self.max_episode_length_s
+            )
             self.episode_sums[key][env_ids] = 0.0
 
         if self.cfg.domain_rand.randomize_gains:
