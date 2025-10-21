@@ -6,6 +6,7 @@
 # Project: https://sites.google.com/view/corl2022-wasabi/home
 # Author: Chenhao Li, Marin Vlastelica, Sebastian Blaes, Jonas Frey, Felix Grimminger, Georg Martius
 # Affiliation: Max Planck Institute for Intelligent Systems, Germany
+
 """
 Plays a trained policy and logs statistics.
 """

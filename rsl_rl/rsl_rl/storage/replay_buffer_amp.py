@@ -1,3 +1,12 @@
+# !/usr/bin/env python3
+# Code from 
+#   Adversarial Motion Priors Make Good Substitutes for  Complex Reward Functions 
+#       2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+# Paper: https://arxiv.org/abs/2203.15103
+# Project: -
+# Author: Alejandro Escontrela, Xue Bin Peng, Wenhao Yu, Tingnan Zhang  Atil Iscen, Ken Goldberg, Pieter Abbeel
+# Affiliation: UC Berkeley, Google Brain
+
 import torch
 import numpy as np
 

@@ -245,6 +245,16 @@ def export_policy_as_onnx(actor_critic, path, filename="policy.onnx"):
     policy_exporter.export(path, filename)
 
 
+# 20251021 zqy: add function merge_dict
+#   from parkour/legged_gym/utils/helpers.py
+def merge_dict(this: dict, other: dict):
+    """ Merging two dicts. if a key exists in both dict, the other's value will take priority
+    NOTE: This method is implemented in python>=3.9
+    """
+    output = this.copy()
+    output.update(other)
+    return output
+
 class PolicyExporterLSTM(torch.nn.Module):
     def __init__(self, actor_critic):
         super().__init__()

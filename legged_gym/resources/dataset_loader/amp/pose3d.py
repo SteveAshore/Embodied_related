@@ -1,17 +1,12 @@
-# coding=utf-8
-# Copyright 2020 The Google Research Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# !/usr/bin/env python3
+# Code from 
+#   Adversarial Motion Priors Make Good Substitutes for  Complex Reward Functions 
+#       2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+# Paper: https://arxiv.org/abs/2203.15103
+# Project: -
+# Author: Alejandro Escontrela, Xue Bin Peng, Wenhao Yu, Tingnan Zhang  Atil Iscen, Ken Goldberg, Pieter Abbeel
+# Affiliation: UC Berkeley, Google Brain
+
 """Utilities for 3D pose conversion."""
 import math
 import numpy as np

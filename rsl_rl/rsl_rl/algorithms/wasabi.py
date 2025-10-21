@@ -1,5 +1,11 @@
-#  Copyright 2021 ETH Zurich, NVIDIA CORPORATION
-#  SPDX-License-Identifier: BSD-3-Clause
+# !/usr/bin/env python3
+# Code from 
+#   Learning Agile Skills via Adversarial Imitation of Rough Partial Demonstrations 
+#       Proceedings of the 6th Conference on Robot Learning (CoRL)
+# Paper: https://arxiv.org/abs/2206.11693
+# Project: https://sites.google.com/view/corl2022-wasabi/home
+# Author: Chenhao Li, Marin Vlastelica, Sebastian Blaes, Jonas Frey, Felix Grimminger, Georg Martius
+# Affiliation: Max Planck Institute for Intelligent Systems, Germany
 
 # torch
 import torch

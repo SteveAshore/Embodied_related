@@ -30,3 +30,37 @@
 
 from .actor_critic import ActorCritic
 from .actor_critic_recurrent import ActorCriticRecurrent
+
+# code from parkour
+from .actor_critic_parkour import ActorCritic as ActorCriticParkour
+from .actor_critic_recurrent_parkour import ActorCriticRecurrent as ActorCriticRecurrentParkour
+from .visual_actor_critic_parkour import VisualDeterministicRecurrent, VisualDeterministicAC
+from .actor_critic_mutex_parkour import ActorCriticMutex
+from .actor_critic_field_mutex_parkour import ActorCriticFieldMutex, ActorCriticClimbMutex
+from .encoder_actor_critic_parkour import EncoderActorCriticMixin, EncoderActorCritic, EncoderActorCriticRecurrent
+from .state_estimator_parkour import EstimatorMixin, StateAc, StateAcRecurrent
+from .all_mixer_parkour import EncoderStateAc, EncoderStateAcRecurrent
+
+def build_actor_critic(env, policy_class_name, policy_cfg):
+    """ NOTE: This method allows to hack the policy kwargs by adding the env attributes to the policy_cfg. """
+    actor_critic_class = globals()[policy_class_name] # ActorCritic
+
+    policy_cfg = policy_cfg.copy()
+    if env.num_privileged_obs is not None:
+        num_critic_obs = env.num_privileged_obs 
+    else:
+        num_critic_obs = env.num_obs
+    if hasattr(env, "obs_segments") and "obs_segments" not in policy_cfg:
+        policy_cfg["obs_segments"] = env.obs_segments
+    if hasattr(env, "privileged_obs_segments") and "privileged_obs_segments" not in policy_cfg:
+        policy_cfg["privileged_obs_segments"] = env.privileged_obs_segments
+    if not "num_actor_obs" in policy_cfg:
+        policy_cfg["num_actor_obs"] = env.num_obs
+    if not "num_critic_obs" in policy_cfg:
+        policy_cfg["num_critic_obs"] = num_critic_obs
+    if not "num_actions" in policy_cfg:
+        policy_cfg["num_actions"] = env.num_actions
+    
+    actor_critic: ActorCritic = actor_critic_class(**policy_cfg)
+
+    return actor_critic
