@@ -4,7 +4,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 from rsl_rl.algorithms.ppo import PPO
-from rsl_rl.rsl_rl.algorithms.tppo_parkour import TPPO
+from rsl_rl.algorithms.tppo_parkour import TPPO
 from rsl_rl.utils.utils import unpad_trajectories, get_subobs_by_components
 from rsl_rl.storage.rollout_storage import SarsaRolloutStorage
 

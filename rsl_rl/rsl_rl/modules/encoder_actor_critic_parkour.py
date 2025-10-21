@@ -3,8 +3,8 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-from rsl_rl.rsl_rl.modules.mlp_parkour import MlpModel
-from rsl_rl.rsl_rl.modules.conv2d_parkour import Conv2dHeadModel
+from rsl_rl.modules.mlp_parkour import MlpModel
+from rsl_rl.modules.conv2d_parkour import Conv2dHeadModel
 from rsl_rl.utils.utils import get_obs_slice
 
 class EncoderActorCriticMixin:

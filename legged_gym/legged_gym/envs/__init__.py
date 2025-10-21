@@ -30,6 +30,7 @@
 
 from legged_gym import LEGGED_GYM_ROOT_DIR, LEGGED_GYM_ENVS_DIR
 from .base.legged_robot import LeggedRobot
+from .base.legged_robot_parkour import LeggedRobot as LeggedRobotParkour
 from .anymal_c.anymal import Anymal
 from .anymal_c.mixed_terrains.anymal_c_rough_config import AnymalCRoughCfg, AnymalCRoughCfgPPO
 from .anymal_c.flat.anymal_c_flat_config import AnymalCFlatCfg, AnymalCFlatCfgPPO
@@ -75,10 +76,10 @@ task_registry.register( "unitree_h1_2", H1_2Robot, H1_2RoughCfg(), H1_2RoughCfgP
 
 task_registry.register( "solo8_wasabi", Solo8, Solo8FlatCfg(), Solo8FlatCfgPPO() )
 task_registry.register( "unitree_a1_amp", A1AMPRobot, A1AMPCfg(), A1AMPCfgPPO() )
-task_registry.register( "unitree_a1_parkour_field", LeggedRobot, A1FieldCfg(),A1FieldCfgPPO())
-task_registry.register( "unitree_a1_parkour_distill", LeggedRobot, A1FieldDistillCfg(), A1FieldDistillCfgPPO())
-task_registry.register( "unitree_g1_parkour_field", LeggedRobot, Go1FieldCfg(), Go1FieldCfgPPO())
-task_registry.register( "unitree_g1_parkour_distill", LeggedRobot, Go1FieldDistillCfg(), Go1FieldDistillCfgPPO())
+task_registry.register( "unitree_a1_parkour_field", LeggedRobotParkour, A1FieldCfg(),A1FieldCfgPPO())
+task_registry.register( "unitree_a1_parkour_distill", LeggedRobotParkour, A1FieldDistillCfg(), A1FieldDistillCfgPPO())
+task_registry.register( "unitree_g1_parkour_field", LeggedRobotParkour, Go1FieldCfg(), Go1FieldCfgPPO())
+task_registry.register( "unitree_g1_parkour_distill", LeggedRobotParkour, Go1FieldDistillCfg(), Go1FieldDistillCfgPPO())
 task_registry.register( "unitree_go2_comp_s2", Go2KaiWuS2, GO2KaiWuS2RoughCfg(), GO2KaiWuS2RoughCfgPPO() )
-task_registry.register( "unitree_go2_parkour_field", LeggedRobot, Go2FieldCfg(), Go2FieldCfgPPO())
-task_registry.register( "unitree_go2_parkour_distill", LeggedRobot, Go2DistillCfg(), Go2DistillCfgPPO())
+task_registry.register( "unitree_go2_parkour_field", LeggedRobotParkour, Go2FieldCfg(), Go2FieldCfgPPO())
+task_registry.register( "unitree_go2_parkour_distill", LeggedRobotParkour, Go2DistillCfg(), Go2DistillCfgPPO())

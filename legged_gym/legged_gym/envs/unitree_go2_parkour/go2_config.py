@@ -2,7 +2,7 @@
 import numpy as np
 import os.path as osp
 
-from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
+from legged_gym.envs.base.legged_robot_config_parkour import LeggedRobotCfg, LeggedRobotCfgPPO
 
 go2_action_scale = 0.5
 go2_const_dof_range = dict(

@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 
 from rsl_rl.utils.utils import get_obs_slice
-from rsl_rl.rsl_rl.modules.actor_critic_mutex_parkour import ActorCriticMutex
+from rsl_rl.modules.actor_critic_mutex_parkour import ActorCriticMutex
 
 class ActorCriticFieldMutex(ActorCriticMutex):
     def __init__(self,

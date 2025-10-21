@@ -7,7 +7,7 @@
 # Author: Ziwen Zhuang, Zipeng Fu, Jianren Wang, Christopher Atkeson, Soeren Schwertfeger, Chelsea Finn, Hang Zhao
 # Affiliation: Shanghai Qi Zhi, Stanford, ShanghaiTech, CMU, Tsinghua
 
-from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
+from legged_gym.envs.base.legged_robot_config_parkour import LeggedRobotCfg, LeggedRobotCfgPPO
 
 class A1RoughCfg( LeggedRobotCfg ):
     class env( LeggedRobotCfg.env ):

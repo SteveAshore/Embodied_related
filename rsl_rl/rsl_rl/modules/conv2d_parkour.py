@@ -2,7 +2,7 @@
 import torch
 
 from rsl_rl.modules.mlp_parkour import MlpModel
-from rsl_rl.rsl_rl.modules.utils_parkour import conv2d_output_shape
+from rsl_rl.modules.utils_parkour import conv2d_output_shape
 
 
 class Conv2dModel(torch.nn.Module):

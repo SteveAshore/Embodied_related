@@ -8,7 +8,7 @@ import numpy as np
 import torch
 
 from rsl_rl.utils.utils import get_obs_slice
-import rsl_rl.rsl_rl.utils.data_compresser_parkour as compresser
+import rsl_rl.utils.data_compresser_parkour as compresser
 from rsl_rl.storage.rollout_storage import RolloutStorage
 
 class DemonstrationSaver:

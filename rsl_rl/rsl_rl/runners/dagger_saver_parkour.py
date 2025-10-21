@@ -10,7 +10,7 @@ from tensorboard import SummaryWriter
 from tabulate import tabulate
 
 from rsl_rl.modules import build_actor_critic
-from rsl_rl.rsl_rl.runners.demonstration_parkour import DemonstrationSaver
+from rsl_rl.runners.demonstration_parkour import DemonstrationSaver
 from rsl_rl.algorithms.tppo_parkour import GET_PROB_FUNC
 
 class DaggerSaver(DemonstrationSaver):

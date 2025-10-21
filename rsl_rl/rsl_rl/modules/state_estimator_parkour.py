@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 from .actor_critic_parkour import ActorCritic
 from .actor_critic_recurrent_parkour import ActorCriticRecurrent, ActorCriticHiddenState
-from rsl_rl.rsl_rl.modules.mlp_parkour import MlpModel
+from rsl_rl.modules.mlp_parkour import MlpModel
 from rsl_rl.modules.actor_critic_recurrent_parkour import Memory
 from rsl_rl.utils import unpad_trajectories
 from rsl_rl.utils.utils import get_subobs_size, get_subobs_by_components, substitute_estimated_state
